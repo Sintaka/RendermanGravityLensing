@@ -1,0 +1,62 @@
+cmake_minimum_required(VERSION 3.20)
+
+project(GravityLensingIntegrator LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Src Files
+set(SRC_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/PxrVolume.cpp
+)
+
+# RenderMan Installation Path (Absolute Path)
+set(RENDERMAN_ROOT "C:/Program Files/Pixar/RenderManProServer-27.2")
+set(RENDERMAN_INCLUDE_DIR "${RENDERMAN_ROOT}/include")
+set(RENDERMAN_LIB_DIR "${RENDERMAN_ROOT}/lib")
+
+# target: DLL
+add_library(GravityLensingIntegrator SHARED ${SRC_FILES})
+set_target_properties(GravityLensingIntegrator PROPERTIES
+    OUTPUT_NAME "GravityLensingIntegrator"
+    PREFIX ""
+)
+
+# Include Paths
+target_include_directories(GravityLensingIntegrator PRIVATE
+    "${RENDERMAN_INCLUDE_DIR}"
+)
+
+# Libraries Paths
+target_link_directories(GravityLensingIntegrator PRIVATE
+    "${RENDERMAN_LIB_DIR}"
+)
+target_link_libraries(GravityLensingIntegrator PRIVATE
+    libprman.lib
+    libstats.lib
+    libpxrcore.lib
+)
+
+# Windows Config
+if (MSVC)
+    target_compile_definitions(GravityLensingIntegrator PRIVATE
+        NOMINMAX
+        _CRT_SECURE_NO_WARNINGS
+    )
+endif()
+
+# Optional: Output to Specified Directory
+set_target_properties(GravityLensingIntegrator PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin"
+    ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/lib"
+    LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin"
+)
+
+# Copy to Plugin Path
+# add_custom_command(TARGET GravityLensingIntegrator POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#         "$<TARGET_FILE:GravityLensingIntegrator>"
+#         "D:/Animation_Project/Renderman/Plugin/GravityLensingIntegrator/GravityLensingIntegrator.dll"
+#     COMMENT "Copying DLL to RenderMan plugin directory"
+# )

@@ -1,0 +1,1 @@
+"C:\Program Files\Side Effects Software\Houdini 21.0.596\bin\hython.exe" "C:\Program Files\Pixar\RenderManForHoudini-27.2\3.11\21.0.596\python3.11libs\args2hda.py"

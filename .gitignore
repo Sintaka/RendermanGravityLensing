@@ -1,0 +1,28 @@
+# 默认忽略的文件
+/shelf/
+/workspace.xml
+# 基于编辑器的 HTTP 客户端请求
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+lib/
+build/
+bin/
+SDK/
+_backup/
+
+add_bom.ps1
+ChatContext.txt
+Chat.txt
+
+.vs/
+.vscode/
+.idea/
+x64/
+x32/
+PxrBlack/
+
+*.sln
+*.vcx*

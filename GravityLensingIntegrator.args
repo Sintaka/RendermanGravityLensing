@@ -1,0 +1,13 @@
+<args format="1.0">
+    <shaderType>
+        <tag value="bxdf"/>
+    </shaderType>
+    <help>Gravity lensing integrator</help>
+    <output name="bxdf_out">
+        <tags>
+            <tag value="bxdf"/>
+            <tag value="surface"/>
+        </tags>
+    </output>
+    <rfmdata nodeid="1919519" classification="rendernode/RenderMan/bxdf"/>
+</args>

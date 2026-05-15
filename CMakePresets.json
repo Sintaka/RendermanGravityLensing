@@ -1,0 +1,24 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "vs2026-v142",
+            "displayName": "Visual Studio 2026 with v142 toolset",
+            "generator": "Visual Studio 18 2026",
+            "architecture": "x64",
+            "toolset": "v142",
+            "binaryDir": "${sourceDir}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_GENERATOR_TOOLSET": "v142"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "release",
+            "configurePreset": "vs2026-v142",
+            "configuration": "Release"
+        }
+    ]
+}
