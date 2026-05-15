@@ -5,6 +5,12 @@ I'm very sorry if the code I wrote has bothered anyone. When the initial version
 <img width="1920" height="1080" alt="GvtySampleScene" src="https://github.com/user-attachments/assets/16946778-9b3c-4673-b5c8-0bfe3ef5dce5" />
 It works with Geometry, Points, Volume OUTSIDE THE LENSING. If you make a PxrVolume Overlapping With in, it will crash your computer memory.
 
+## How it progress
+When a ray hit the Lensing Volume, For each step forward:\
+**ray.dir = normalize(ray.dir + densityColor);** \
+**ray.P += density * ray.direction;** \
+After 2000 times if still hit nothing, the ray will directly shoot out with no distance limitation.
+
 ## Installation
 
 ### Maya
